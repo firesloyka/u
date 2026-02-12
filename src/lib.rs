@@ -15,7 +15,31 @@ pub fn app() -> Html {
 
     log!("my name is", name);
     log!(serde_json::to_string_pretty(&my_object).unwrap());
+    let class: &str = "my_title";
+    let message: Option<&str> = None;
+    let tasks = vec!["record video", "grocery shopping", "pet Xible"];
     html! {
-        <h1>{"Hello World!!!"}</h1>
+        <>
+        <h1 class = {class}>{"Hello World!!!"}</h1>
+       if class =="my_titles" {
+        <p>{"Hi there!"}</p>
+    } else
+    {
+        <p>{"I am not a titles!"}</p>
     }
+
+    if let Some(message) = message {
+        <p>{message}</p>
+    } else {
+        <p>{"No messages to see today"}</p>
+    }
+    <ul>
+    {list_to_html(tasks)}
+    </ul>
+        </>
+    }
+}
+
+fn list_to_html(list: Vec<&str>) -> Vec<Html> {
+    list.iter().map(|item| html!{<li>{item}</li>}).collect()
 }
