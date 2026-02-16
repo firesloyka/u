@@ -7,22 +7,14 @@ pub fn app() -> Html {
         r#"
             h1 {
             color:orange;
-            }
-
-            p {
-                color::white;
-    }
-
-            
+            }            
         "#
     )
     .unwrap();
     html! {
         <div class  ={stylesheet}>
-
-
             <h1>{"Hello World!!!"}</h1>
-            <p>{"more text"}</p>
+            <p class = {css! ("color: red; font-size: 75px;")}> {"more text"}</p>
         </div>
     }
 }
