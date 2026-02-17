@@ -1,20 +1,15 @@
-use stylist::{style, yew::styled_component};
+use stylist::{Style, style, yew::styled_component};
 use yew::prelude::*;
+
+const STYLE_FILE: &str = include_str!("main.css");
 
 #[styled_component(App)]
 pub fn app() -> Html {
-    let stylesheet = style!(
-        r#"
-            h1 {
-            color:orange;
-            }            
-        "#
-    )
-    .unwrap();
+    let stylesheet = Style::new(STYLE_FILE).unwrap();
     html! {
         <div class  ={stylesheet}>
             <h1>{"Hello World!!!"}</h1>
-            <p class = {css! ("color: red; font-size: 75px;")}> {"more text"}</p>
+            <p> {"more text"}</p>
         </div>
     }
 }
