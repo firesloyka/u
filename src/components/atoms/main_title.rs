@@ -5,7 +5,8 @@ use yew::prelude::*;
 
 pub struct Props {
     pub title: String,
-    pub color: Color
+    pub color: Color,
+    pub on_load: Callback<String>,
 
 }
 
@@ -46,6 +47,8 @@ pub fn main_title(props: &Props
     "#
    
 ).unwrap();
+
+props.on_load.emit("I loaded !!!!".to_owned());
     html! {
         <div class={stylesheet}>
             <h1 class={props.color.to_string()}>{&props.title}</h1>

@@ -111,6 +111,11 @@ function __wbg_get_imports() {
             const ret = arg0.lastChild;
             return isLikeNone(ret) ? 0 : addToExternrefTable0(ret);
         },
+        __wbg_log_e51ef223c244b133: function(arg0, arg1) {
+            var v0 = getArrayJsValueFromWasm0(arg0, arg1).slice();
+            wasm.__wbindgen_free(arg0, arg1 * 4, 4);
+            console.log(...v0);
+        },
         __wbg_namespaceURI_86e2062c65f0f341: function(arg0, arg1) {
             const ret = arg1.namespaceURI;
             var ptr1 = isLikeNone(ret) ? 0 : passStringToWasm0(ret, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
@@ -228,8 +233,8 @@ function __wbg_get_imports() {
             console.warn(...v0);
         },
         __wbindgen_cast_0000000000000001: function(arg0, arg1) {
-            // Cast intrinsic for `Closure(Closure { dtor_idx: 159, function: Function { arguments: [NamedExternref("Event")], shim_idx: 160, ret: Unit, inner_ret: Some(Unit) }, mutable: false }) -> Externref`.
-            const ret = makeClosure(arg0, arg1, wasm.wasm_bindgen__closure__destroy__hb40e10be1c990a24, wasm_bindgen__convert__closures_____invoke__hec0bfb9f98f101d9);
+            // Cast intrinsic for `Closure(Closure { dtor_idx: 92, function: Function { arguments: [NamedExternref("Event")], shim_idx: 93, ret: Unit, inner_ret: Some(Unit) }, mutable: false }) -> Externref`.
+            const ret = makeClosure(arg0, arg1, wasm.wasm_bindgen__closure__destroy__hf3ee5983f8e50019, wasm_bindgen__convert__closures_____invoke__h842249da217b4ecb);
             return ret;
         },
         __wbindgen_cast_0000000000000002: function(arg0) {
@@ -258,8 +263,8 @@ function __wbg_get_imports() {
     };
 }
 
-function wasm_bindgen__convert__closures_____invoke__hec0bfb9f98f101d9(arg0, arg1, arg2) {
-    wasm.wasm_bindgen__convert__closures_____invoke__hec0bfb9f98f101d9(arg0, arg1, arg2);
+function wasm_bindgen__convert__closures_____invoke__h842249da217b4ecb(arg0, arg1, arg2) {
+    wasm.wasm_bindgen__convert__closures_____invoke__h842249da217b4ecb(arg0, arg1, arg2);
 }
 
 function addToExternrefTable0(obj) {
