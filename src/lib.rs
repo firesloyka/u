@@ -5,6 +5,7 @@ use yew::prelude::*;
 mod components;
 
 use components::atoms::main_title::{Color, MainTitle};
+use components::molecules::custom_form::CustomForm;
 
 #[styled_component(App)]
 pub fn app() -> Html {
@@ -12,6 +13,8 @@ pub fn app() -> Html {
     html! {
         <div>
            <MainTitle title = "Hi there!!!!!" color={Color::Ok} on_load={main_title_load}/>
+            <CustomForm />
         </div>
     }
 }
+ 
