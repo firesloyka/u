@@ -1,28 +1,27 @@
+use gloo::console::log;
 use gloo::file::ObjectUrl;
 use serde::de::value;
 use wasm_bindgen::JsCast;
 use web_sys::HtmlInputElement;
 use yew::prelude::*;
-use gloo::console::log;
 
 #[derive(Properties, PartialEq)]
- 
- pub struct Props {
-    pub name: String,
 
- }
+pub struct Props {
+    pub name: String,
+    pub handle_onchange: Callback<String>,
+}
 
 #[function_component(TextInput)]
 pub fn text_input(props: &Props) -> Html {
-    let onchange = Callback::from(|event: Event| {
+    let handle_onchange = props.handle_onchange.clone();
+    let onchange = Callback::from(move |event: Event| {
         let value = event
-        .target()
-        .unwrap()
-        .unchecked_into::<HtmlInputElement>()
-        .value();
-        log!(value);
-    
-
+            .target()
+            .unwrap()
+            .unchecked_into::<HtmlInputElement>()
+            .value();
+        handle_onchange.emit(value);
     });
     html! {
         <input type="text" name={props.name.clone()} onchange={onchange} />
