@@ -7,11 +7,15 @@ use yew::ContextProvider;
 use yew::prelude::*;
 
 mod components;
+mod router;
 
 use components::atoms::main_title::{Color, MainTitle};
 use components::molecules::custom_form::CustomForm;
 
 use crate::components::molecules::custom_form::Data;
+use crate::router::Route;
+use crate::router::switch;
+use yew_router::prelude::*;
 
 #[derive(Debug, PartialEq, Clone, Default)]
 pub struct User {
@@ -26,6 +30,7 @@ pub fn app() -> Html {
    let first_load = use_state(|| true);
     use_effect(move || {
         if *first_load {
+            first_load.set(false);
 
         }
         || {}
@@ -48,6 +53,9 @@ pub fn app() -> Html {
         <ContextProvider<User> context={user_state.deref().clone()}>
            <MainTitle title = "Hi there!!!!!" color={Color::Ok} on_load={main_title_load}/>
             <CustomForm onsubmit={custom_form_submit} />
+       <BrowserRouter>
+            <Switch<Route> render={Switch::render(switch)} />
+       </BrowserRouter>
         </ContextProvider<User>>
     }
 }
